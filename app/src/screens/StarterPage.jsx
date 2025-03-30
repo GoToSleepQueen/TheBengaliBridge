@@ -1,21 +1,30 @@
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 const StarterPage = () => {
+  const navigation = useNavigation()
+  const handleNewUser = () => {
+    navigation.navigate('Why Learning')
+  }
+  const handleExistingUser = () => {
+    navigation.navigate('Log In')
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Hi! Welcome To The Bengali Bridge!</Text>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonWrapper}>
-          <View style={[styles.shadow, {backgroundColor: '#ff3434'}]}></View>
-          <TouchableOpacity style={[styles.button, {backgroundColor: "#b22222"}]}>
-            <Text style={styles.buttonText}>Next</Text>
+          <View style={[styles.shadow, { backgroundColor: '#ff3434' }]}></View>
+          <TouchableOpacity onPress={handleNewUser} style={[styles.button, { backgroundColor: "#b22222" }]}>
+            <Text style={styles.buttonText}>New User</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.buttonWrapper}>
-          <View style={[styles.shadow, {backgroundColor: "#b22222"}]}></View>
-          <TouchableOpacity style={[styles.button, {backgroundColor: "#6e1616"}]}>
-            <Text style={styles.buttonText}>What The Meower</Text>
+          <View style={[styles.shadow, { backgroundColor: "#b22222" }]}></View>
+          <TouchableOpacity onPress={handleExistingUser} style={[styles.button, { backgroundColor: "#6e1616" }]}>
+            <Text style={styles.buttonText}>Existing User</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -63,5 +72,8 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: "bold",
     color: "white"
+  },
+  buttonsContainer: {
+    paddingBottom: 50,
   }
 })
