@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#fdf6e3'
+    backgroundColor: '#fdf6e3',
   },
   text: {
     fontWeight: "bold",
@@ -75,5 +75,6 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     paddingBottom: 50,
+    width: '90%',
   }
 })
