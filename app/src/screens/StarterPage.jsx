@@ -21,6 +21,11 @@ const StarterPage = () => {
             <Text style={styles.buttonText}>New User</Text>
           </TouchableOpacity>
         </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginVertical: 10 }}>
+          <View style={styles.line}></View>
+          <Text style={styles.orText}>or</Text>
+          <View style={styles.line}></View>
+        </View>
         <View style={styles.buttonWrapper}>
           <View style={[styles.shadow, { backgroundColor: "#b22222" }]}></View>
           <TouchableOpacity onPress={handleExistingUser} style={[styles.button, { backgroundColor: "#6e1616" }]}>
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#fdf6e3'
+    backgroundColor: '#fdf6e3',
   },
   text: {
     fontWeight: "bold",
@@ -75,5 +80,16 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     paddingBottom: 50,
-  }
+    width: '90%',
+  },
+  line: {
+    height: 1,
+    flex: 1,
+    alignSelf: 'center',
+    backgroundColor: '#000',
+  },
+  orText: {
+    fontWeight: 'bold',
+    marginHorizontal: 10,
+  },
 })
