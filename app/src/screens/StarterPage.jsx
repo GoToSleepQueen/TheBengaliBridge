@@ -13,7 +13,10 @@ const StarterPage = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Hi! Welcome To The Bengali Bridge!</Text>
+      <View>
+        <Text style={styles.text}>Hi! Welcome To The Bengali Bridge!</Text>
+        <Text style={styles.paragraphText}>Our focus is to develop language skills and cultural awareness to our users.</Text>
+      </View>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonWrapper}>
           <View style={[styles.shadow, { backgroundColor: '#ff3434' }]}></View>
@@ -91,5 +94,12 @@ const styles = StyleSheet.create({
   orText: {
     fontWeight: 'bold',
     marginHorizontal: 10,
+  },
+  paragraphText: {
+    fontSize: 16,
+    textAlign: 'center',
+    padding: 5,
+    marginBottom: 20,
+    color: '#333',
   },
 })
