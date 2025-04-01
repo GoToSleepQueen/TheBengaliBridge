@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
+import Button from '../components/Button'
 
 const StarterPage = () => {
   const navigation = useNavigation()
@@ -18,23 +19,13 @@ const StarterPage = () => {
         <Text style={styles.paragraphText}>Our focus is to develop language skills and cultural awareness to our users.</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <View style={styles.buttonWrapper}>
-          <View style={[styles.shadow, { backgroundColor: '#ff3434' }]}></View>
-          <TouchableOpacity onPress={handleNewUser} style={[styles.button, { backgroundColor: "#b22222" }]}>
-            <Text style={styles.buttonText}>New User</Text>
-          </TouchableOpacity>
-        </View>
+        <Button shadowColor="#ff3434" buttonColor="#b22222" onPress={handleNewUser} buttonText="New User" />
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginVertical: 10 }}>
           <View style={styles.line}></View>
           <Text style={styles.orText}>or</Text>
           <View style={styles.line}></View>
         </View>
-        <View style={styles.buttonWrapper}>
-          <View style={[styles.shadow, { backgroundColor: "#b22222" }]}></View>
-          <TouchableOpacity onPress={handleExistingUser} style={[styles.button, { backgroundColor: "#6e1616" }]}>
-            <Text style={styles.buttonText}>Existing User</Text>
-          </TouchableOpacity>
-        </View>
+        <Button shadowColor="#b22222" buttonColor="#6e1616" onPress={handleExistingUser} buttonText="Existing User" />
       </View>
     </SafeAreaView>
   )
