@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Feather, FontAwesome6 } from '@expo/vector-icons'
 import IconButton from '../components/IconButton'
 import OneCircle from '../components/OneCircle'
 import TwoCircle from '../components/TwoCircle'
 import ThreeCircle from '../components/ThreeCircle'
+import { UserContext } from '../context/UserContext'
 
 const WhatLevel = () => {
   const navigation = useNavigation()
@@ -15,6 +16,12 @@ const WhatLevel = () => {
   const gotoWhyLearning = () => {
     navigation.navigate("Why Learning")
   }
+  const { setUserLevel } = useContext(UserContext);
+
+  const handleLevelSelect = (level) => {
+    setUserLevel(level); // Set the selected level in context
+    navigation.navigate("Account Creation");
+  };
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>What is your level of fluency?</Text>
@@ -23,17 +30,17 @@ const WhatLevel = () => {
           icon={<OneCircle width={15} height={15}></OneCircle>}
           shadowColor="#ff3434"
           buttonColor="#b22222"
-          onPress={gotoAccountCreation} />
+          onPress={() => handleLevelSelect("Beginner")} />
         <IconButton buttonText="Intermediate"
           icon={<TwoCircle width={25} height={25}></TwoCircle>}
           shadowColor="#ff3434"
           buttonColor="#b22222"
-          onPress={gotoAccountCreation} />
+          onPress={() => handleLevelSelect("Intermediate")} />
         <IconButton buttonText="Advanced"
           icon={<ThreeCircle width={30} height={30}></ThreeCircle>}
           shadowColor="#ff3434"
           buttonColor="#b22222"
-          onPress={gotoAccountCreation} />
+          onPress={() => handleLevelSelect("Advanced")} />
       </View>
       <IconButton style={styles.backButton} buttonText="Back"
         icon={<Feather name="arrow-left" size={25} color={"white"}></Feather>}
