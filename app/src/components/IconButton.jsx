@@ -11,7 +11,6 @@ const IconButton = ({ buttonText, icon, shadowColor, buttonColor, onPress, style
           <Text style={styles.buttonText}>{buttonText}</Text>
         </View>
       </TouchableOpacity>
-
     </View>
   )
 }
