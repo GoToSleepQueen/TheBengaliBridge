@@ -2,12 +2,12 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 
-const Button = ({ shadowColor, buttonColor, onPress, buttonText, buttonStyle }) => {
+const Button = ({ shadowColor, buttonColor, onPress, buttonText, buttonStyle, disabled }) => {
   return (
     <View style={[styles.buttonWrapper, buttonStyle]}>
       {/* Shadow effect */}
-      <View style={[styles.shadow, { backgroundColor: shadowColor }]}></View>
-      <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: buttonColor }]}>
+      <View style={[styles.shadow, { backgroundColor: !disabled ? shadowColor : "#676767" }]}></View>
+      <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: !disabled ? buttonColor : "#969696" }]} disabled={disabled}>
         <Text style={styles.buttonText}>{buttonText}</Text>
       </TouchableOpacity>
     </View>

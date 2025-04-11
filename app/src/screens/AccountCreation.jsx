@@ -1,15 +1,45 @@
 import { StyleSheet, Text, SafeAreaView, TouchableOpacity, View, TextInput, Image, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Button from '../components/Button'
 import IconButton from '../components/IconButton'
 import { Feather } from '@expo/vector-icons'
+import { UserContext } from '../context/UserContext'
+import { auth, db } from '../config/firebaseConfig'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, setDoc } from 'firebase/firestore'
+import { useState } from 'react'
 
 const AccountCreation = () => {
   const navigation = useNavigation()
-  const gotoTabs = () => {
-    navigation.navigate("Tabs")
-  }
+  const { userLevel, learningReason } = useContext(UserContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSignUp = async () => {
+    try {
+      setLoading(true);
+      // Create user with Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Save additional user data to Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        email: user.email,
+        level: userLevel,
+        reason: learningReason,
+      });
+
+      navigation.navigate("Tabs"); // Navigate to the next screen
+    } catch (error) {
+      console.error("Error signing up:", error.message);
+    }
+  };
+
+
   const gotoWhatLevel = () => {
     navigation.navigate("What Level")
   }
@@ -23,12 +53,12 @@ const AccountCreation = () => {
           <View>
             <Text style={styles.text}>Create your account!</Text>
             <View style={styles.inputContainer}>
-              <TextInput placeholder="Email" style={styles.input} placeholderTextColor={"#6c6c6c"} />
-              <TextInput placeholder="Password" style={styles.input} placeholderTextColor={"#6c6c6c"} secureTextEntry />
-              <TextInput placeholder="First Name" style={styles.input} placeholderTextColor={"#6c6c6c"} />
-              <TextInput placeholder="Last Name" style={styles.input} placeholderTextColor={"#6c6c6c"} />
+              <TextInput placeholder="Email" style={styles.input} placeholderTextColor={"#6c6c6c"} value={email} onChangeText={setEmail} />
+              <TextInput placeholder="Password" style={styles.input} placeholderTextColor={"#6c6c6c"} secureTextEntry value={password} onChangeText={setPassword} />
+              <TextInput placeholder="First Name" style={styles.input} placeholderTextColor={"#6c6c6c"} value={firstname} onChangeText={setFirstName} />
+              <TextInput placeholder="Last Name" style={styles.input} placeholderTextColor={"#6c6c6c"} value={lastname} onChangeText={setLastName} />
             </View>
-            <Button buttonText={"Sign Up!"} shadowColor="#ff3434" buttonColor="#b22222" buttonStyle={styles.button} onPress={gotoTabs} />
+            <Button buttonText={"Sign Up!"} shadowColor="#ff3434" buttonColor="#b22222" buttonStyle={styles.button} onPress={handleSignUp} disabled={loading || !email || !password || !firstname || !lastname} />
           </View>
           <Image style={styles.image} source={require("../../../assets/images/BridgeNoBG.png")} />
           <IconButton
