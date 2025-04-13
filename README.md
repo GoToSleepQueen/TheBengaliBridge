@@ -1,50 +1,78 @@
-# Welcome to your Expo app 👋
+# 🌸 Bengali Language & Culture Learning App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> **Connecting Generations. Celebrating Heritage. Empowering Community.**
 
-## Get started
+This is an early-stage nonprofit project to help second-generation Bengali immigrants and curious learners connect with the Bengali language, culture, and community.  
+Our goal is to preserve and celebrate Bengali heritage through fun, interactive lessons and cultural immersion activities.
 
-1. Install dependencies
+We’re just getting started — and we’re building this with care, love, and community input!
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 🌟 Project Vision
 
-   ```bash
-    npx expo start
-   ```
+### Core Goals:
+- **Language Learning:** Help users build foundational Bengali vocabulary and conversational skills.
+- **Cultural Awareness:** Engage users with Bengali festivals, recipes, music, and stories.
+- **Community Connection:** Foster a sense of belonging by highlighting cultural events and causes.
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🚧 Current Focus (Early Development)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+✅ **Wireframes and design planning**  
+✅ **Feature planning for MVP**  
+✅ **Community and cultural content brainstorming**  
+🔜 **Prototype development**
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 🗺️ Planned MVP Features
 
-```bash
-npm run reset-project
-```
+### 🗣️ Beginner Level
+- Interactive lessons (vocabulary, grammar)
+- Conversational practice
+- Daily challenges
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 🎨 Intermediate & Advanced Level
+- Cultural-based translation tasks (like recipe translation)
+- Immersion mini-games with cultural themes
+- Learn Bengali through songs and poetry
 
-## Learn more
+### ❤️ Future Community & Fundraising
+- Specific cause-driven fundraising initiatives *(exploring ideas)*
+- Event announcements and cultural highlights *(planned for later phase)*
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🛠️ Tech Stack (Planned)
 
-## Join the community
+- **Frontend:** React Native (planned)
+- **Backend:** Firebase (planned)
+- *(We are keeping it simple for MVP — AI & payments are future enhancements)*
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🤝 How to Get Involved
+
+We are in the brainstorming and early development phase, and we welcome:
+- **Ideas & feedback** from language learners and community members
+- **Design & content suggestions** for lessons and cultural content
+- **Developers & volunteers** interested in contributing to the build
+
+📧 **Contact:** *your-email@example.com*
+
+---
+
+## 📄 License
+
+To be determined — likely MIT or similar open-source license.
+
+---
+
+## 🙌 Acknowledgments
+
+- To our Bengali community worldwide — this app is for you.
+- To future contributors, educators, and culture keepers — join us!
+
+---
