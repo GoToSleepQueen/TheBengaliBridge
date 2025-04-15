@@ -8,6 +8,8 @@ import WhatLevel from "../screens/WhatLevel"
 import AccountCreation from "../screens/AccountCreation"
 import LogIn from "../screens/LogIn"
 import Tabs from "./Tabs"
+import LoadingScreen from "..screens/LoadingScreen"
+import AuthNavigator from "./AuthenticationFlow/AuthNavigator"
 
 const Stack = createStackNavigator();
 
@@ -16,9 +18,6 @@ const AppNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        contentStyle: {
-          backgroundColor: "fdf6e3"
-        }
       }}>
        <Stack.Screen 
       name='Start' 
@@ -38,14 +37,12 @@ const AppNavigator = () => {
 
       <Stack.Screen
       name="What Level" 
-      component={WhatLevel} 
-      options={{headerTitle:"What level are you at?"}}>
+      component={WhatLevel}>
       </Stack.Screen>
 
       <Stack.Screen
       name="Account Creation" 
-      component={AccountCreation} 
-      options={{headerTitle:"Let's create your account"}}>
+      component={AccountCreation}>
       </Stack.Screen>
 
       <Stack.Screen
@@ -56,6 +53,32 @@ const AppNavigator = () => {
   )
 }
 
-export default AppNavigator
+export default () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [user, setUser] = react.useState(null);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(!isLoading);
+    },500);
+
+    setTimeout(() => {
+      setUser({});
+    },1000);
+  }, []);
+
+  return (
+    <NavigationContainer>
+      {isLoading ? (
+        <LoadingScreen/>
+      ) : user ? (
+        <AppNavigator/>
+      ) : (
+        <AuthNavigator/>
+      )
+    }
+    </NavigationContainer>
+  )
+}
 
 const styles = StyleSheet.create({})
