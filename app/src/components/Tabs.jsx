@@ -15,10 +15,10 @@ const Tabs = () => {
   return (
     <Tab.Navigator
     screenOptions={{
-      tabBarActiveTintColor: 'tomato',
+      tabBarActiveTintColor: '#b22222',
       tabBarInactiveTintColor: 'gray',
       tabBarStyle: {
-        backgroundColor: 'white',
+        backgroundColor: '#fdf6e3',
       },
     }}
     >

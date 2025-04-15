@@ -12,3 +12,14 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+export const SignInContext = React.createContext();
+
+export function useIsSignedIn() {
+  const isSignedIn = React.useContext(SignInContext);
+  return isSignedIn;
+}
+
+export function useIsSignedOut() {
+  const isSignedIn = React.useContext(SignInContext);
+  return !isSignedIn;
+}
