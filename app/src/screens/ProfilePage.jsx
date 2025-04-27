@@ -13,7 +13,7 @@ const ProfilePage = () => {
     }).catch((error) => {
       console.error("Error signing out: ", error)
     })
-    navigation.navigate("Log In")
+
   }
   return (
     <View>

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, SafeAreaView, TouchableOpacity, Platform, Keyboard, View, TextInput, Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { getAuth, signInWithEmailAndPassword, } from "firebase/auth";
 import { auth } from '../config/firebaseConfig';
@@ -8,22 +8,30 @@ import { TouchableWithoutFeedback } from 'react-native';
 import Button from '../components/Button';
 import IconButton from '../components/IconButton';
 import { Feather } from '@expo/vector-icons';
-
+import AuthContext from '../context/AuthContext';
 
 const LogIn = () => {
   const navigation = useNavigation()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [signingIn, setSigningIn] = useState(false);
 
-  const gotoTabs = () => {
-    navigation.navigate("Tabs")
-  }
+  const { user, loading } = useContext(AuthContext);
+  
+  useEffect(() => {
+    if (!loading && user) {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Tabs' }],
+      });
+    }
+  }, [user, loading]);
+  
   const gotoStarterPage = () => {
     navigation.navigate("Start")
   }
   const handleSignIn = async () => {
-    setLoading(true)
+    setSigningIn(true)
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
@@ -35,8 +43,7 @@ const LogIn = () => {
       const errorCode = error.code;
       const errorMessage = error.message;
     });
-    navigation.navigate("Tabs")
-    setLoading(false)
+    setSigningIn(false)
   }
   return (
     <KeyboardAvoidingView
@@ -51,7 +58,7 @@ const LogIn = () => {
               <TextInput placeholder="Email" style={styles.input} placeholderTextColor={"#6c6c6c"} value={email} onChangeText={setEmail} />
               <TextInput placeholder="Password" style={styles.input} placeholderTextColor={"#6c6c6c"} secureTextEntry value={password} onChangeText={setPassword} />
             </View>
-            <Button buttonText={"Sign In!"} shadowColor="#ff3434" buttonColor="#b22222" buttonStyle={styles.button} onPress={handleSignIn} disabled={loading || !email || !password} />
+            <Button buttonText={"Sign In!"} shadowColor="#ff3434" buttonColor="#b22222" buttonStyle={styles.button} onPress={handleSignIn} disabled={signingIn || !email || !password} />
           </View>
           <Image style={styles.image} source={require("../../../assets/images/BridgeNoBG.png")} />
           <IconButton

@@ -44,7 +44,7 @@ const Tabs = () => {
         name="Culture Page"
         component={CulturePage}
         options={{
-          tabBaricon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => (
             <FontAwesome6 name="book-atlas" size={25} color={focused ? "tomato" : "black"}/>
           )
         }}
@@ -53,7 +53,7 @@ const Tabs = () => {
         name="Community Page"
         component={CommunityPage}
         options={{
-          tabBaricon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => (
             <FontAwesome6 name="hand-holding-heart" size={25} color={focused? "tomato" : "black"}/>
           )
         }}
@@ -62,7 +62,7 @@ const Tabs = () => {
         name="Profile"
         component={ProfilePage}
         options={{
-          tabBaricon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => (
             <Feather name='user' size={25} color={focused? "tomato" : "black"}/>
           )
         }}
