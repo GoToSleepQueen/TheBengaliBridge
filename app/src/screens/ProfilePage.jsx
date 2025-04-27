@@ -1,12 +1,26 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Button from '../components/Button'
 import { signOut } from 'firebase/auth'
 import { auth } from '../config/firebaseConfig'
 import { useNavigation } from '@react-navigation/native'
+import AuthContext from '../context/AuthContext'
 
 const ProfilePage = () => {
   const navigation = useNavigation()
+  const { user, loading } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log("User: ", user)
+    console.log("Loading: ", loading)
+    if (!loading && !user) {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Log In' }],
+      });
+    }
+  }, [user, loading]);
+
   const handleSignOut = async () => {
     await signOut(auth).then(() => {
       console.log("User signed out")

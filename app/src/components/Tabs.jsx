@@ -14,16 +14,16 @@ const Tab = createBottomTabNavigator()
 const Tabs = () => {
   return (
     <Tab.Navigator
-    screenOptions={{
-      tabBarActiveTintColor: '#b22222',
-      tabBarInactiveTintColor: 'gray',
-      tabBarStyle: {
-        backgroundColor: '#fdf6e3',
-      },
-    }}
+      screenOptions={{
+        tabBarActiveTintColor: '#b22222',
+        tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+          backgroundColor: '#fdf6e3',
+        },
+      }}
     >
       <Tab.Screen
-        name="Home" 
+        name="Home"
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -32,7 +32,7 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Language Modules"
+        name="Language"
         component={LanguageModules}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -41,20 +41,20 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Culture Page"
+        name="Culture"
         component={CulturePage}
         options={{
           tabBarIcon: ({ focused }) => (
-            <FontAwesome6 name="book-atlas" size={25} color={focused ? "tomato" : "black"}/>
+            <FontAwesome6 name="book-atlas" size={25} color={focused ? "tomato" : "black"} />
           )
         }}
       />
       <Tab.Screen
-        name="Community Page"
+        name="Community"
         component={CommunityPage}
         options={{
           tabBarIcon: ({ focused }) => (
-            <FontAwesome6 name="hand-holding-heart" size={25} color={focused? "tomato" : "black"}/>
+            <FontAwesome6 name="hand-holding-heart" size={25} color={focused ? "tomato" : "black"} />
           )
         }}
       />
@@ -63,7 +63,7 @@ const Tabs = () => {
         component={ProfilePage}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Feather name='user' size={25} color={focused? "tomato" : "black"}/>
+            <Feather name='user' size={25} color={focused ? "tomato" : "black"} />
           )
         }}
       />
