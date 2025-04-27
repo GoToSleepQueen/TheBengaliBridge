@@ -17,8 +17,10 @@ const LogIn = () => {
   const [signingIn, setSigningIn] = useState(false);
 
   const { user, loading } = useContext(AuthContext);
-  
+
   useEffect(() => {
+    console.log("User: ", user)
+    console.log("Loading: ", loading)
     if (!loading && user) {
       navigation.reset({
         index: 0,
@@ -26,7 +28,7 @@ const LogIn = () => {
       });
     }
   }, [user, loading]);
-  
+
   const gotoStarterPage = () => {
     navigation.navigate("Start")
   }
@@ -39,10 +41,11 @@ const LogIn = () => {
         console.log(user.uid)
         // ...
       })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+      });
     setSigningIn(false)
   }
   return (
@@ -58,7 +61,14 @@ const LogIn = () => {
               <TextInput placeholder="Email" style={styles.input} placeholderTextColor={"#6c6c6c"} value={email} onChangeText={setEmail} />
               <TextInput placeholder="Password" style={styles.input} placeholderTextColor={"#6c6c6c"} secureTextEntry value={password} onChangeText={setPassword} />
             </View>
-            <Button buttonText={"Sign In!"} shadowColor="#ff3434" buttonColor="#b22222" buttonStyle={styles.button} onPress={handleSignIn} disabled={signingIn || !email || !password} />
+            <Button
+              buttonText={signingIn ? "Signing In..." : "Sign In!"}
+              shadowColor="#ff3434"
+              buttonColor="#b22222"
+              buttonStyle={styles.button}
+              onPress={handleSignIn}
+              disabled={signingIn || !email || !password}
+            />
           </View>
           <Image style={styles.image} source={require("../../../assets/images/BridgeNoBG.png")} />
           <IconButton
