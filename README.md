@@ -60,7 +60,7 @@ We are in the brainstorming and early development phase, and we welcome:
 - **Design & content suggestions** for lessons and cultural content
 - **Developers & volunteers** interested in contributing to the build
 
-📧 **Contact:** *your-email@example.com*
+📧 **Contact:** *oishani.potter@gmail.com* or *dragon.screech76@gmail.com*
 
 ---
 
